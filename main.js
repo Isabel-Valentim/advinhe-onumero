@@ -1,21 +1,30 @@
-const res = document.querySelector('#res');
-const resbtn = document.querySelector('#btnres');
+const res = document.querySelector('#res')
+const resbtn = document.querySelector('#btnres')
 
-const palpites = document.querySelector('.palpites');
-const ultimoRes = document.querySelector('.ultimoRes');
-const baixoOuAlto = document.querySelector('.baixoOuAlto');
+const palpitesInput = document.querySelector('.palpites')
+const ultimoRes = document.querySelector('.ultimoRes')
+const baixoOuAlto = document.querySelector('.baixoOuAlto')
 
 /*Gerar um número aleatório entre 1 e 100*/
-let numAleatorio = Math.floor(Math.random() *100)+1;
-console.log(numAleatorio)
+let numAleatorio = Math.floor(Math.random() *100)+1
 
 /*Gravar o número do turno que o jogador está. Iniciar em 1.*/
-let contagemPalpites = 1;
 
-resbtn.addEventListener(onclick)
-function anaPalpites(){
+var contagemPalpites = 1;
+var palpiteValue = Number(palpitesInput.value)
 
+resbtn.addEventListener("click", analisePalpites)
+
+function analisePalpites(){
+    if(palpiteValue == NaN){
+        alert('Faça um palpite')
+    }else{
+        let palpite = palpiteValue
+        console.log(palpite)
+    }
+    
 }
+
 /*Após a tentativa ter sido submetida, primeiro gravar em algum lugar para que o usuário possa ver as tentativas anteriores.*/
 
 
