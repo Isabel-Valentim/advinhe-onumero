@@ -13,29 +13,25 @@ var contagemPalpites = 0;
 
 resbtn.addEventListener("click", analisePalpites)
 
-const todosOsPalpites = []
+const state = {contGame: [], currentGame: []}
 
 function analisePalpites(){
     var res = input.value 
     if(res != ""){
         contagemPalpites = contagemPalpites + 1
         
-        todosOsPalpites.push(
-            {key: contagemPalpites,
-            value: res})
+        state.contGame.push(contagemPalpites)
+        state.currentGame.push(res)
         
-        let chaves = Object.keys(todosOsPalpites)
-        let valores = Object.values(todosOsPalpites)
-        console.log(valores)
-        
-        for(let c in chaves){
-            for( let v in valores)
-            palpites.innerHTML += `<p>Tentativa ${chaves}: ${valores} </p>`
-        }
-        
-        
-        // palpites.innerHTML += contagemPalpites+' - '+res+' / '
-
+        for(let c in state.contGame){   
+            
+            const palpite = document.createElement('li')
+            palpite.classList.add('palpite')
+            palpite.innerHTML = `Tentativa ${state.contGame[c]}: ${state.currentGame[c]} `
+            palpites.appendChild(palpite)  
+               
+        }  
+  
         if (res == numAleatorio){
             /*Se estiver correto: Escrever mensagem de parabéns.*/
             ultimoRes.innerHTML = "Parabéns! Você acertou. Vamos jogar de novo"
