@@ -5,23 +5,37 @@ const palpites = document.querySelector('.palpites')
 const ultimoRes = document.querySelector('.ultimoRes')
 const baixoOuAlto = document.querySelector('.baixoOuAlto')
 
-/*Gerar um número aleatório entre 1 e 100*/
+
 var numAleatorio = Math.floor(Math.random() *100)+1
 
-/*Gravar o número do turno que o jogador está. Iniciar em 1.*/
+
 var contagemPalpites = 0;
 
 resbtn.addEventListener("click", analisePalpites)
+
+const todosOsPalpites = []
 
 function analisePalpites(){
     var res = input.value 
     if(res != ""){
         contagemPalpites = contagemPalpites + 1
-        console.log(res)
-        console.log(contagemPalpites)
-        console.log(numAleatorio)
-        /*Após a tentativa ter sido submetida, primeiro gravar em algum lugar para que o usuário possa ver as tentativas anteriores.*/
-        palpites.innerHTML += contagemPalpites+' - '+res+' / '
+        
+        todosOsPalpites.push(
+            {key: contagemPalpites,
+            value: res})
+        
+        let chaves = Object.keys(todosOsPalpites)
+        let valores = Object.values(todosOsPalpites)
+        console.log(valores)
+        
+        for(let c in chaves){
+            for( let v in valores)
+            palpites.innerHTML += `<p>Tentativa ${chaves}: ${valores} </p>`
+        }
+        
+        
+        // palpites.innerHTML += contagemPalpites+' - '+res+' / '
+
         if (res == numAleatorio){
             /*Se estiver correto: Escrever mensagem de parabéns.*/
             ultimoRes.innerHTML = "Parabéns! Você acertou. Vamos jogar de novo"
