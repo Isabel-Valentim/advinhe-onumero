@@ -23,15 +23,14 @@ function analisePalpites(){
         state.contGame.push(contagemPalpites)
         state.currentGame.push(res)
         
-        for(let c in state.contGame){   
-            
+                
             const palpite = document.createElement('li')
             palpite.classList.add('palpite')
-            palpite.innerHTML = `Tentativa ${state.contGame[c]}: ${state.currentGame[c]} `
+            palpite.innerHTML = `Tentativa ${state.contGame[contagemPalpites-1]}: ${state.currentGame[contagemPalpites-1]} `
             palpites.appendChild(palpite)  
+
                
-        }  
-  
+
         if (res == numAleatorio){
             /*Se estiver correto: Escrever mensagem de parabéns.*/
             ultimoRes.innerHTML = "Parabéns! Você acertou. Vamos jogar de novo"
